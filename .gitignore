@@ -1,0 +1,5 @@
+.vscode
+backend/.vscode
+backend/node_modules
+backend/package-lock.json
+backend/db.json
