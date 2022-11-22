@@ -1,4 +1,3 @@
-const initialState = {
+export default {
   courses: [],
 };
-export default initialState;

@@ -1,38 +1,41 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { StyleSheet } from "react-native";
+// React-Native-Elements
+import {
+  Header as _Header,
+  lightColors as colors,
+  Button,
+} from "@rneui/themed";
+import Icon from "react-native-vector-icons/Ionicons";
 
-const Header = () => {
-  const activeStyle = { color: "#black" };
+const toggleSidebar = (navigation) => {
+  navigation.toggleDrawer();
+};
+
+export const Header = ({ navigation }) => {
   return (
-    <Navbar bg="light" expand="lg">
-      <NavLink className="myNavLink" to="/" exact>
-        <img
-          alt=""
-          src="./assets/brujula.jpg"
-          width="30"
-          height="30"
-          className="d-inline-block align-top mr-3"
+    <_Header
+      leftComponent={
+        <Button
+          onPress={() => toggleSidebar(navigation)}
+          icon={<Icon name="menu" size={15} color="white" />}
         />
-        Cuatrovientos
-      </NavLink>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <NavLink
-            className="myNavLink"
-            to="/courses"
-            activeStyle={activeStyle}
-          >
-            Formación
-          </NavLink>
-          <NavLink className="myNavLink" to="/about" activeStyle={activeStyle}>
-            Proyecto educativo
-          </NavLink>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+      }
+      centerComponent={{
+        text: "Instituto Cuatrovientos",
+        style: { color: "#fff" },
+      }}
+    />
   );
 };
 
-export default Header;
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: colors.white,
+  },
+  headerText: {
+    marginTop: 12,
+    fontSize: 18,
+    color: colors.grey0,
+  },
+});
